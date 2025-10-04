@@ -9,7 +9,7 @@ return function(HttpService, webhookURL, ctx)
 
 	local embed = {
 		title = "Remote Misuse Detected",
-		description = ("**Remote:** `%s`\n**Reason:** `%s`\n**UUID:** `%s`")
+		description = ("**Remote : ** `%s`\n**Reason : ** `%s`\n**UUID : ** `%s`")
 			:format(tostring(ctx.remote or "?"), tostring(ctx.reason or "?"), tostring(ctx.uuid or "-")),
 		color = 15158332,
 		fields = {
