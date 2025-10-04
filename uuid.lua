@@ -1,15 +1,9 @@
-return {
-    enabled = false,
-    ttl_sec = 120,
-    ignore_if_missing_uuid = false,
+{
+    "enabled": false,
+    "missuuid": false,
+    "sec": 120,
     
-    whitelist_userids = {},
-    whitelist_players = {},
-    whitelist_remotes = {}
-
-    sec = ttl_sec
-    missuuid = ignore_if_missing_uuid
-    userids = whitelist_userids
-    players = whitelist_players
-    remotes = whitelist_remotes
+    "userids": [],
+    "players": [],
+    "remotes": []
 }
