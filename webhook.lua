@@ -6,7 +6,6 @@ return function(HttpService, webhookURL, ctx)
 	local uid = tonumber(plr.UserId) or 0
 	local profile = ("https://www.roblox.com/users/%d/profile"):format(uid)
 	local nowSend = os.time()
-	local whenHit = tonumber(ctx.detected_unix) or nowSend
 
 	local embed = {
 		title = "Remote Misuse Detected",
@@ -19,7 +18,6 @@ return function(HttpService, webhookURL, ctx)
 			{ name = "DisplayName", value = tostring(plr.DisplayName), inline = true },
 			{ name = "Account Age (days)", value = tostring(plr.AccountAge or 0), inline = true },
 			{ name = "Profile", value = profile, inline = false },
-			{ name = "Detected At (UTC)", value = iso(whenHit), inline = true },
 			{ name = "Webhook Sent (UTC)", value = iso(nowSend), inline = true },
 		},
 		timestamp = iso(nowSend)
