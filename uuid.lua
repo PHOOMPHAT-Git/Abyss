@@ -1,5 +1,5 @@
 return {
-    enabled = true,
+    enabled = false,
     ttl_sec = 120,
     ignore_if_missing_uuid = false,
     
