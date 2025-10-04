@@ -1,6 +1,6 @@
 return function(HttpService, webhookURL, ctx)
 	local plr = ctx.player
-	if not plr or type(webhookURL) ~= "string" or #webhookURL == 0 then return end
+	if not plr or type(webhookURL) ~= "string" or #webhookURL == 0 then return false end
 
 	local function iso(t) return os.date("!%Y-%m-%dT%H:%M:%SZ", t or os.time()) end
 	local uid = tonumber(plr.UserId) or 0
@@ -28,8 +28,9 @@ return function(HttpService, webhookURL, ctx)
 		embeds = { embed }
 	}
 
-	local ok, _ = pcall(function()
-		return HttpService:RequestAsync({
+	local res
+	local ok = pcall(function()
+		res = HttpService:RequestAsync({
 			Url = webhookURL,
 			Method = "POST",
 			Headers = { ["Content-Type"] = "application/json" },
@@ -37,5 +38,6 @@ return function(HttpService, webhookURL, ctx)
 		})
 	end)
 
-	return ok == true
+	if not ok or not res then return false end
+	return res.Success == true
 end
